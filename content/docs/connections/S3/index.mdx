@@ -1,0 +1,264 @@
+---
+title: S3
+description: Your S3 document
+---
+
+Welcome to the docs! You can start writing documents in `/content/docs`.
+
+# S3
+### Amazon S3 Bucket Connection on DataSage.ai
+
+This page contains the setup guide and reference information for the [S3](https://docs.aws.amazon.com) source connector.
+
+
+warning
+
+Using cloud storage may incur egress costs. Egress refers to data that is transferred out of the cloud storage system, such as when you download files or access them from a different location. For detailed information on egress costs, please consult the [AWS S3 pricing guide](https://aws.amazon.com/s3/pricing/).
+
+---
+
+### Prerequisites[​](#prerequisites "Direct link to Prerequisites")
+
+* Access to the S3 bucket containing the files to replicate.
+* For **private buckets**, an AWS account with the ability to grant permissions to read from the bucket.
+---
+## Setup guide[​](#setup-guide "Direct link to Setup guide")
+
+### Step 1: Set up S3[​](#step-1-set-up-s3 "Direct link to Step 1: Set up S3")
+
+**If you are syncing from a private bucket**, you need to authenticate the connection. This can be done either by using an `IAM User` (with `AWS Access Key ID` and `Secret Access Key`) or an `IAM Role` (with `Role ARN`). Begin by creating a policy with the necessary permissions:
+
+#### Create a Policy[​](#create-a-policy "Direct link to Create a Policy")
+
+1. Log in to your Amazon AWS account and open the [IAM console](https://console.aws.amazon.com/iam/home#home).
+2. In the IAM dashboard, select **Policies**, then click **Create Policy**.
+3. Select the **JSON** tab, then paste the following JSON into the Policy editor (be sure to substitute in your bucket name):
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+        "Effect": "Allow",
+        "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+        ],
+        "Resource": [
+                "arn:aws:s3:::{your-bucket-name}/*",
+                "arn:aws:s3:::{your-bucket-name}"
+        ]
+        }
+    ]
+}
+```
+Note
+
+At this time, object-level permissions alone are not sufficient to successfully authenticate the connection. Please ensure you include the **bucket-level** permissions as provided in the example above.
+
+4. Give your policy a descriptive name, then click **Create policy**.
+---
+#### Option 1: Using an IAM User[​](#option-1-using-an-iam-user "Direct link to Option 1: Using an IAM User")
+
+1. In the IAM dashboard, click **Users**. Select an existing IAM user or create a new one by clicking **Add users**.
+2. If you are using an *existing* IAM user, click the **Add permissions** dropdown menu and select **Add permissions**. If you are creating a *new* user, you will be taken to the Permissions screen after selecting a name.
+3. Select **Attach policies directly**, then find and check the box for your new policy. Click **Next**, then **Add permissions**.
+4. After successfully creating your user, select the **Security credentials** tab and click **Create access key**. You will be prompted to select a use case and add optional tags to your access key. Click **Create access key** to generate the keys.
+
+Caution
+Your `Secret Access Key` will only be visible once upon creation. Be sure to copy and store it securely for future use.
+
+For more information on managing your access keys, please refer to the [official AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
+
+#### Option 2: Using an IAM Role (Most secure)[​](#option-2-using-an-iam-role-most-secure "Direct link to Option 2: Using an IAM Role (Most secure)")
+
+Note
+
+S3 authentication using an IAM role member is not supported using the OSS platform.
+Note
+
+S3 authentication using an IAM role member must be enabled by a member of the DataSage team. If you'd like to use this feature, please [contact the Sales team](https://youdata.ai/contact-us/) for more information.
+
+1. In the IAM dashboard, click **Roles**, then **Create role**.
+
+2. Choose the **AWS account** trusted entity type.
+
+3. Set up a trust relationship for the role. This allows the DataSage instance's AWS account to assume this role. You will also need to specify an external ID, which is a secret key that the trusting service (DataSage) and the trusted role (the role you're creating) both know. This ID is used to prevent the "confused deputy" problem. The External ID should be your DataSage workspace ID, which can be found in the URL of your workspace page. Edit the trust relationship policy to include the external ID:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::094410056844:user/delegated_access_user"
+            },
+            "Action": "sts:AssumeRole",
+            "Condition": {
+                "StringEquals": {
+                    "sts:ExternalId": "{your-datasage-workspace-id}"
+                }
+            }
+        }
+        ]
+}
+```
+4. Complete the role creation and note the Role ARN.
+
+### Step 2: Set up the S3 connector in DataSage[​](#step-2-set-up-the-s3-connector-in-datasage "Direct link to Step 2: Set up the S3 connector in datasage")
+
+### For DataSage Cloud:[​](#for-datasage-cloud "Direct link to For datasage Cloud:")
+
+1. [Log into your DataSage Cloud](https://cloud.datasage.com/workspaces) account.
+
+2. Click Connection and then click + New source.
+
+3. On the Set up the source page, select S3 from the Source type dropdown.
+
+4. Enter a name for the S3 connector.
+
+5. Choose a [delivery method](/platform/using-datasage/delivery-methods.md) for your data.
+
+6. Enter the name of the **Bucket** containing your files to replicate.
+
+7. Add a stream
+
+
+
+   1. Choose the **File Format**
+   2. In the **Format** box, use the dropdown menu to select the format of the files you'd like to replicate. The supported formats are **CSV**, **Parquet**, **Avro** and **JSONL**. Toggling the **Optional fields** button within the **Format** box will allow you to enter additional configurations based on the selected format. For a detailed breakdown of these settings, refer to the [File Format section](#file-format-settings) below.
+   3. Give a **Name** to the stream
+   4. (Optional) Enter the **Globs** which dictates which files to be synced. This is a regular expression that allows datasage to pattern match the specific files to replicate. If you are replicating all the files within your bucket, use `**` as the pattern. For more precise pattern matching options, refer to the [Globs section](#globs) below.
+   5. (Optional) Modify the **Days To Sync If History Is Full** value. This gives you control of the lookback window that we will use to determine which files to sync if the state history is full. Details are in the [State section](#state) below.
+   6. (Optional) If you want to enforce a specific schema, you can enter a **Input schema**. By default, this value is set to `{}` and will automatically infer the schema from the file(s) you are replicating. For details on providing a custom schema, refer to the [User Schema section](#user-schema).
+   7. (Optional) Select the **Schemaless** option, to skip all validation of the records against a schema. If this option is selected the schema will be `{"data": "object"}` and all downstream data will be nested in a "data" field. This is a good option if the schema of your records changes frequently.
+   8. (Optional) Select a **Validation Policy** to tell datasage how to handle records that do not match the schema. You may choose to emit the record anyway (fields that aren't present in the schema may not arrive at the destination), skip the record altogether, or wait until the next discovery (which will happen in the next 24 hours).
+
+8. **To authenticate your private bucket**:
+
+   * If using an IAM role, enter the **AWS Role ARN**.
+   * If using IAM user credentials, fill the **AWS Access Key ID** and **AWS Secret Access Key** fields with the appropriate credentials.
+
+All other fields are optional and can be left empty. Refer to the [S3 Provider Settings section](#s3-provider-settings) below for more information on each field.
+
+---
+### For DataSage Open Source:[​](#for-datasage-open-source "Direct link to For datasage Open Source:")
+
+1. Navigate to the DataSage Open Source dashboard.
+2. Click Connection and then click + New source.
+3. On the Set up the source page, select S3 from the Source type dropdown.
+4. Enter a name for the S3 connector.
+
+###  Connect a Source: Amazon S3
+
+ **URL:** `https://datasage-new.youdata.ai/connection/new/s3`
+
+---
+
+###  Required Fields
+
+| Field              | Required | Description |
+|--------------------|----------|-------------|
+| **Name**           | ✅       | A name for the S3 connection (e.g., `S3_Sales_Reports`) |
+| **Description**    | ⛔️      | (Optional) Additional notes about the bucket or files |
+| **Access Key ID**  | ✅       | Your AWS access key for programmatic access |
+| **Secret Access Key** | ✅    | Your AWS secret key (keep this secure) |
+| **Region**         | ✅       | AWS region where the bucket is hosted (e.g., `us-east-1`) |
+
+---
+
+## Globs[​](#globs "Direct link to Globs")
+
+(tl;dr -> path pattern syntax using [wcmatch.glob](https://facelessuser.github.io/wcmatch/glob/). GLOBSTAR and SPLIT flags are enabled.)
+
+This connector can sync multiple files by using glob-style patterns, rather than requiring a specific path for every file. This enables:
+
+* Referencing many files with just one pattern, e.g. `**` would indicate every file in the bucket.
+* Referencing future files that don't exist yet (and therefore don't have a specific path).
+You must provide a path pattern. You can also provide many patterns split with | for more complex directory layouts.
+
+Each path pattern is a reference from the *root* of the bucket, so don't include the bucket name in the pattern(s).
+
+Some example patterns:
+
+* `**` : match everything.
+* `**/*.csv` : match all files with specific extension.
+* `myFolder/**/*.csv` : match all csv files anywhere under myFolder.
+* `*/**` : match everything at least one folder deep.
+* `*/*/*/**` : match everything at least three folders deep.
+* `**/file.*|**/file` : match every file called "file" with any extension (or no extension).
+* `x/*/y/*` : match all files that sit in folder x -> any folder -> folder y.
+* `**/prefix*.csv` : match all csv files with specific prefix.
+* `**/prefix*.parquet` : match all parquet files with specific prefix.
+
+Let's look at a specific example, matching the following bucket layout:
+
+```
+myBucket
+    -> log_files
+    -> some_table_files
+        -> part1.csv
+        -> part2.csv
+    -> images
+    -> more_table_files
+        -> part3.csv
+    -> extras
+        -> misc
+            -> another_part1.csv
+```
+
+We want to pick up part1.csv, part2.csv and part3.csv (excluding another\_part1.csv for now). We could do this a few different ways:
+
+* We could pick up every csv file called "partX" with the single pattern `**/part*.csv`.
+* To be a bit more robust, we could use the dual pattern `some_table_files/*.csv|more_table_files/*.csv` to pick up relevant files only from those exact folders.
+* We could achieve the above in a single pattern by using the pattern `*table_files/*.csv`. This could however cause problems in the future if new unexpected folders started being created.
+* We can also recursively wildcard, so adding the pattern `extras/**/*.csv` would pick up any csv files nested in folders below "extras", such as "extras/misc/another\_part1.csv".
+
+As you can probably tell, there are many ways to achieve the same goal with path patterns. We recommend using a pattern that ensures clarity and is robust against future additions to the directory structure.
+---
+## S3 Provider Settings[​](#s3-provider-settings "Direct link to S3 Provider Settings")
+
+* **AWS Access Key ID**: One half of the [required credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for accessing a private bucket.
+* **AWS Secret Access Key**: The other half of the [required credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for accessing a private bucket.
+* **Endpoint**: An optional parameter that enables the use of non-Amazon S3 compatible services. If you are using the default Amazon service, leave this field blank.
+* **Start Date**: An optional parameter that marks a starting date and time in UTC for data replication. Any files that have *not* been modified since this specified date/time will *not* be replicated. Use the provided datepicker (recommended) or enter the desired date programmatically in the format `YYYY-MM-DDTHH:mm:ssZ`. Leaving this field blank will replicate data from all files that have not been excluded by the **Path Pattern** and **Path Prefix**.
+---
+
+
+###  Security Best Practices
+
+- Use **IAM roles** with limited read-only permissions.
+- Rotate your access keys regularly.
+- Avoid using root credentials.
+- Apply bucket policies to control access at a granular level.
+
+---
+
+###  Supported File Types
+
+- `.csv`, `.json`, `.xlsx`, `.xml`, and `.parquet`
+- Make sure files are not encrypted unless using compatible KMS configurations
+
+---
+
+###  Troubleshooting
+
+-  **403 Forbidden** – Check bucket policy or permissions of the IAM user.
+-  **Invalid Access Key** – Verify the key and secret values.
+-  **File Not Found** – Confirm the prefix and filenames.
+
+---
+
+###  References
+
+- [Amazon S3 Documentation](https://docs.aws.amazon.com/s3/index.html)
+- [DataSage.ai Docs](https://github.com/YouData-ai/datasage-docs/blob/main/content/docs/connections/S3/index.mdx)
+
+---
+
+## What DataSage Do?
+
+<Cards>
+  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+</Cards>

@@ -1,0 +1,80 @@
+---
+title: MongoDB
+description: Your MongoDB document
+---
+
+Welcome to the docs! You can start writing documents in `/content/docs`.
+
+# Mongo DB
+
+###  MongoDB Connection Documentation
+
+This guide explains how to create a connection to a MongoDB data source on the DataSage platform.
+
+---
+
+###  Connection Path
+`Connection > New Connection > MongoDB`
+
+---
+
+###  Required Fields
+
+| Field              | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| **Name**           | Provide a recognizable name for the MongoDB connection (e.g., `UserDBProd`) |
+| **Description**    | Optional. A short description of the data source                             |
+| **Connection URL** | Mandatory. The MongoDB connection string in the following format:            |
+
+```shell
+mongodb+srv://<username>:<password>@<cluster-url>/<dbname>?retryWrites=true&w=majority
+```
+
+---
+
+###  Example Connection URL
+
+```shell
+mongodb+srv://admin:yourpassword@cluster0.mongodb.net/myDatabase?retryWrites=true&w=majority
+```
+
+> Replace:
+> - `<username>` with your MongoDB username  
+> - `<password>` with your password  
+> - `<cluster-url>` with your cluster host address (e.g., `cluster0.mongodb.net`)  
+> - `<dbname>` with your database name
+
+---
+
+###  Steps to Connect
+
+1. Navigate to the **Connection** tab in the sidebar.
+2. Select **New Connection**, then choose **MongoDB**.
+3. Fill out the required fields:
+   - **Name**
+   - **Description** (optional)
+   - **Connection URL**
+4. Click **Create**.
+
+---
+
+###  Notes
+
+- Make sure your MongoDB cluster allows external connections.
+- Whitelist your IP address in MongoDB Atlas (if hosted on Atlas).
+- Ensure your connection string uses the proper format for authentication and cluster configuration.
+
+---
+###  References
+
+- [MongoDB Documentation](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/)
+- [DataSage.ai Docs](https://github.com/YouData-ai/datasage-docs/blob/main/content/docs/connections/mongodb/index.mdx)
+
+---
+
+## What DataSage Do?
+
+<Cards>
+  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+</Cards>

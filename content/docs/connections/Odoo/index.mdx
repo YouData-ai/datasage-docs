@@ -1,0 +1,65 @@
+---
+title: Odoo
+description: Your Odoo document
+---
+
+Welcome to the docs! You can start writing documents in `/content/docs`.
+
+# Odoo
+###  Odoo Connection Documentation
+
+This guide explains how to create a connection to an Odoo data source on the DataSage platform.
+
+---
+
+##  Connection Path
+`Connection > New Connection > Odoo`
+
+---
+
+##  Required Fields
+
+| Field         | Description                                                                 |
+|---------------|-----------------------------------------------------------------------------|
+| **Name**      | Provide a name for your Odoo source connection (e.g., `OdooERPProd`)        |
+| **Description** | Optional. Add a short description of the Odoo instance                     |
+| **Host**      | Required. The Odoo server host address (e.g., `https://odoo.example.com`)   |
+| **Database**  | Required. The specific Odoo database name to connect to                     |
+| **Username**  | Required. The username used for authentication in Odoo                      |
+| **Password**  | Required. The password for the Odoo user account                            |
+
+---
+
+
+##  Steps to Connect
+
+1. Go to the **Connection** tab from the left sidebar.
+2. Select **New Connection**, then choose **Odoo**.
+3. Fill out all the required fields:
+   - **Name**
+   - **Description** (optional)
+   - **Host**
+   - **Database**
+   - **Username**
+   - **Password**
+4. Click the **Create** button to save the connection.
+
+---
+
+##  Notes
+
+- Ensure your Odoo server is accessible and allows external API or RPC connections.
+- The host should include the full URL (with `https://` if applicable).
+- Double-check database names for case-sensitivity.
+---
+###  References
+
+- [Odoo Documentation](https://www.odoo.com/documentation/16.0/developer/reference/external_api.html)
+- [DataSage.ai Docs](https://github.com/YouData-ai/datasage-docs/blob/main/content/docs/connections/Odoo/index.mdx)
+---
+## What DataSage Do?
+
+<Cards>
+  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+</Cards>

@@ -5,6 +5,49 @@ description: Your sql document
 
 Welcome to the docs! You can start writing documents in `/content/docs`.
 
+# MySQL
+### MySQL Database Connection on DataSage.Ai
+
+This document provides instructions to set up a connection between a MySQL database and DataSage.Ai.
+
+---
+
+###  Connect a Source: MySQL
+
+To connect your MySQL database to DataSage.Ai, follow the steps on the [MySQL connection page](https://datasage-new.youdata.ai/connection/new/my-sql).
+
+---
+
+###  Required Fields
+
+Fill in the following fields on the connection form:
+
+| Field           | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| **Name**         | A custom name for your connection. Example: `MyApp_MySQL_DB`               |
+| **Description**  | (Optional) A short summary of the database's purpose.                      |
+| **Host**         | Hostname or IP address of your MySQL server. Example: `127.0.0.1`          |
+| **Port**         | The port number for MySQL (Default: `3306`)                                |
+| **Database**     | Name of your MySQL database. Example: `user_data`                          |
+| **Username**     | MySQL user with access privileges to the database.                         |
+| **Password**     | Password for the specified MySQL user.                                     |
+
+---
+
+###  Common Errors and Fixes
+
+-  **"Please input the Username!"** – The username field is mandatory.
+-  **"Please input the Password!"** – You must enter the password to proceed.
+-  **Connection Timeout** – Check firewall rules, IP whitelisting, or port blocking.
+-  **Access Denied** – Verify that your user has proper permissions for the target database.
+
+---
+
+###  Related Resources
+
+- [Official MySQL Documentation](https://dev.mysql.com/doc/)
+- [DataSage.ai Docs](https://github.com/YouData-ai/datasage-docs/blob/main/content/docs/connections/mysql/index.mdx)
+---
 ## What DataSage Do?
 
 <Cards>

@@ -1,0 +1,105 @@
+---
+title: RestAPI
+description: Your RestAPI document
+---
+
+Welcome to the docs! You can start writing documents in `/content/docs`.
+# RestAPI
+
+###  REST API Connection Documentation
+
+This guide provides steps to connect and configure a REST API as a data source on the DataSage platform.
+
+---
+
+###  Connection Path
+`Connection > New Connection > REST API`
+
+---
+
+###  Required Fields
+
+| Field                  | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| **Source Name**        | Provide a name for the API connection (e.g., `SalesforceLeadAPI`)          |
+| **Source Description** | Optional. Add a short description about the API usage                      |
+| **HTTP Method**        | Select the HTTP method (e.g., GET, POST)                      |
+| **Base URL**           | Required. The full endpoint of the API to fetch data from                  |
+
+---
+
+###  Headers
+
+You can add headers required for API requests. Example:
+
+| Key     | Value             |
+|---------|-------------------|
+| Accept  | application/json  |
+| Authorization | Bearer `<your_token>` (if needed) |
+
+Use the `+ Add Header` button to include multiple headers.
+
+---
+
+###  Query Parameters
+
+Use query parameters to customize requests. Example:
+
+| Key   | Value |
+|-------|-------|
+| limit | 100   |
+
+Use `+ Add Query Parameter` to append additional parameters.
+
+---
+
+###  Incremental Fetching
+
+- **Increment Type**: Specify the field (e.g., `offset`, `timestamp`) for incremental data fetching.
+- **Is Incremental**: Check if the data fetch should support incremental updates.
+
+---
+
+###  Pagination Configuration
+
+Enable and configure pagination to fetch paginated API responses.
+
+| Field                    | Description                                |
+|--------------------------|--------------------------------------------|
+| Pagination Parameter Name| e.g., `page`                               |
+| Start Value              | e.g., `0`                                   |
+| Increment By             | e.g., `1`                                   |
+| Max Pages                | Number of pages to fetch (e.g., `3`)       |
+
+> Ensure the API supports pagination using the specified parameter.
+
+---
+
+###  Steps to Connect
+
+1. Navigate to **Connection > New Connection > REST API**.
+2. Fill in the required fields:
+   - Source Name, HTTP Method, and Base URL.
+3. Add headers and query parameters as required.
+4. Configure pagination if needed.
+5. Click **Create** to finalize the connection.
+
+---
+
+###  Notes
+
+- Ensure that your API allows external requests.
+- Double-check tokens, keys, or credentials if authentication fails.
+- Use environment variables or secrets manager for security if supported.
+---
+###  References
+
+
+- [DataSage.ai Docs](https://github.com/YouData-ai/datasage-docs/blob/main/content/docs/connections/RestAPI/index.mdx)
+---
+## What DataSage Do?
+
+<Cards>
+  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+</Cards>

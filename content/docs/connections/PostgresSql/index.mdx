@@ -1,0 +1,80 @@
+---
+title: PostgresSql
+description: Your PostgresSql document
+---
+
+Welcome to the docs! You can start writing documents in `/content/docs`.
+
+# Postgres
+
+This page guides you through the process of setting up the Postgres destination connector.
+
+# PostgreSQL Connection on DataSage.ai
+
+This guide provides step-by-step instructions to configure a PostgreSQL database connection within the DataSage.ai platform.
+
+---
+
+##  Connect a Source: PostgreSQL
+
+To integrate a PostgreSQL database, navigate to:
+
+📍 **URL:** `https://datasage-new.youdata.ai/connection/new/postgresql`
+
+---
+
+##  Required Fields
+
+Fill out the form with the following details:
+
+| Field        | Required | Description |
+|--------------|----------|-------------|
+| **Name**     | ✅       | A unique name to identify this connection (e.g., `AnalyticsDB_PostgreSQL`) |
+| **Description** | ⛔️    | (Optional) A brief summary of the database or its purpose |
+| **Host**     | ✅       | Hostname or IP address of your PostgreSQL server (e.g., `localhost` or `10.0.0.5`) |
+| **Port**     | ✅       | PostgreSQL port number (default is `5432`) |
+| **Database** | ✅       | Name of the PostgreSQL database to connect to (e.g., `analytics_data`) |
+| **Username** | ✅       | PostgreSQL user with necessary permissions |
+| **Password** | ✅       | Corresponding password for the username |
+
+---
+
+##  Common Errors and Fixes
+
+-  **"Please input the Username!"** – Username is mandatory.
+-  **"Please input the Password!"** – Password is required to connect.
+-  **Connection Timeout** – Ensure PostgreSQL is reachable and port 5432 is open.
+-  **Authentication Failed** – Double-check username/password or access rights.
+
+---
+
+##  Security Best Practices
+
+- Use strong credentials and encrypted channels (e.g., SSL).
+- Restrict access to trusted IPs.
+- Do not expose your database to the public internet.
+
+---
+
+##  References
+
+- [PostgreSQL Official Docs](https://www.postgresql.org/docs/)
+- [DataSage.ai Help Center](https://datasage-new.youdata.ai/docs)
+
+---
+
+**Note**
+
+The schema names are case sensitive. The 'public' schema is set by default. Multiple schemas may be used at one time. No schemas set explicitly - will sync all of existing.
+---
+###  References
+
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/current/tutorial-start.html)
+- [DataSage.ai Docs](https://github.com/YouData-ai/datasage-docs/blob/main/content/docs/connections/PostgreSQL/index.mdx)
+---
+## What DataSage Do?
+
+<Cards>
+  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+</Cards>

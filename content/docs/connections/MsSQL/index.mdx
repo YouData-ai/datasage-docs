@@ -1,0 +1,63 @@
+---
+title: MsSQL
+description: Your Mssql document
+---
+
+Welcome to the docs! You can start writing documents in `/content/docs`.
+
+# MSSQL
+
+### Microsoft SQL Server (MSSQL) Connection — DataSage.Ai
+
+This documentation provides a step-by-step guide to configure and connect a Microsoft SQL Server (MSSQL) data source using the DataSage.Ai platform.
+
+---
+
+###  How to Connect to MSSQL
+
+1. **Navigate to:**  
+   `https://datasage-new.youdata.ai/connection/new/ms-sql`
+
+2. **Fill in the required fields:**
+
+###  Connection Configuration Fields
+
+| Field Name       | Description                                             | Example                    |
+|------------------|---------------------------------------------------------|----------------------------|
+| **Name**         | A unique name for your connection                       | `mssql_production`         |
+| **Description**  | Optional description about the data source              | `Production DB for sales`  |
+| **Host**         | The hostname or IP address of the SQL Server            | `192.168.1.10` or `db.yourdomain.com` |
+| **Port**         | Port number used by MSSQL (default is `1433`)           | `1433`                     |
+| **Database**     | Name of the target database within the server           | `SalesDB`                  |
+| **Username**     | SQL Server username (SQL authentication only)           | `admin_user`               |
+| **Password**     | Corresponding password for the above user               | `yourStrongPassword!123`   |
+
+
+---
+
+##  Troubleshooting
+
+-  **"Please input the Username!"** – Ensure you fill in the Username field.
+-  **"Please input the Password!"** – Enter the correct password before saving.
+-  **Security Tip:** Avoid sharing credentials in plain text. Use environment variables or secure vaults for production.
+
+---
+
+##  Notes
+
+- Make sure your MS SQL server allows remote connections.
+- If using a cloud database, ensure IP whitelisting is configured to allow connections from DataSage.ai.
+
+---
+###  References
+
+- [MsSQL Documentation](https://learn.microsoft.com/en-us/sql/relational-databases/security/authentication-access/create-a-login?view=sql-server-ver17)
+- [DataSage.ai Docs](https://github.com/YouData-ai/datasage-docs/blob/main/content/docs/connections/MsSQL/index.mdx)
+---
+
+## What DataSage Do?
+
+<Cards>
+  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+</Cards>
