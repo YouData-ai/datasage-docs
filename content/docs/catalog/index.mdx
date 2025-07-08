@@ -1,0 +1,64 @@
+---
+title: Catalog
+description: Your Catalog document
+---
+
+Welcome to the docs! You can start writing documents in `/content/docs`.
+
+## Catalog Overview
+
+The **Catalog** module provides a centralized view of all ingested data, organized by database, tables, and schema structure. It allows users to explore, validate, and document data post-ingestion.
+
+---
+
+### Database View
+
+Once a data source is ingested, its respective **database** becomes visible in the **Catalog** under the connected source (e.g., `Snowflake`, `MSSQL`, etc.).
+
+#### Features:
+- Displays a list of all available databases
+- Allows easy search and navigation of tables/entities
+- Each database shows a count of tables (entities) under it
+
+
+---
+
+### Entity (Table) Details View
+
+Clicking on a table name from the entity list opens its **Table Details** view. This section includes complete schema metadata, column-level information, data quality insights, and tagging options.
+
+#### Key Components:
+- **Table Summary**:
+  - Last Processed Timestamp
+  - Total Row and Column Count
+  - Data Quality Score (e.g., 45%)
+  - Warning if columns have issues (e.g., 55 columns with issues)
+
+- **Schema Details**:
+  - Field Name and Type (e.g., `ACCOUNT_ID` - `Int64`, `IS_EMAIL_ELIGIBLE` - `Boolean`)
+  - Key Type (Primary/Foreign)
+  - Editable Descriptions
+  - Stats View (if enabled)
+
+- **Upload Contextual Data**:
+  - Allows users to upload files related to the table to enrich metadata contextually.
+
+- **Additional Metadata**:
+  - Tags
+  - Data Type Distribution
+  - Preprocessing Suggestions (if applicable)
+
+
+---
+
+> ✅ Use the **Catalog** to explore schema structure, manage metadata, monitor data quality, and enrich datasets for downstream use.
+
+
+
+
+## What DataSage Do?
+
+<Cards>
+  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+</Cards>

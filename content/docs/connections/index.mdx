@@ -5,6 +5,76 @@ description: Your first document
 
 Welcome to the docs! You can start writing documents in `/content/docs`.
 
+## New Source
+
+Set up a new source in DataSage is a quick and simple process! When viewing the DataSage UI, you'll see the main navigation bar on the left side of your screen ,click on **connection** tab. Click the **New Source** tab to bring up a list of all available sources.
+
+You can use the provided search bar, or simply scroll down the list to find the source you want to replicate data from. 
+
+![Setup streams]()
+
+The left half of the page contains a set of fields that you will have to fill out. In the **Source name** field, you can enter a name of your choosing to help you identify this instance of the connector.
+Each connector in DataSage will have its own set of authentication methods and configurable parameters. 
+
+---
+
+###  Step 1: Navigate to "New Connection"
+
+1. Go to the **Connection** section on the left sidebar.
+2. Click on **"New Source"**.
+
+![Setup streams]()
+
+
+###  Step 2: Choose Any Connector
+
+1. Search for any connector on the grid.
+2. Click on the **MSSQL** icon to begin configuration.
+
+###  Step 3: Fill Connection Details
+
+You will see a form titled **"Connect a Source"** with the following fields:
+
+- **Name**: Uniqe name for your connection.
+- **Description**: Optional description for reference.
+- **Host**: IP address or hostname of your MSSQL server.
+- **Port**: Port number (usually `1433`).
+- **Database**: Name of the database you want to connect to.
+- **Username**: Your MSSQL login username.
+- **Password**: Corresponding password.
+
+###  Step 4: Save and Test Connection
+
+- After filling out all required fields, click **"Test Connection"** (if available).
+- If the test is successful, click **"Save"**.
+
+You are now ready to ingest and query data from your MSSQL source in DataSage.Ai!
+
+---
+
+**Important Note**
+
+###  Current Destination Setup: Amazon S3
+
+Currently, the platform only supports **Amazon S3** as a destination. The S3 destination must be **pre-configured** before it can be used to store or send data.
+
+###  Future Support: Multiple Destination Connectivity
+
+In the future, the platform will support **dynamic connection to multiple destinations**, similar to how multiple sources are currently supported.
+
+---
+
+
+> This setup ensures scalable, pluggable, and reliable destination management, aligned with the way data sources are handled today.
+
+---
+## What DataSage Do?
+
+<Cards>
+  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+</Cards>
+
 ## What DataSage Do?
 
 <Cards>

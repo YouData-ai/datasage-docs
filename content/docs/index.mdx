@@ -4,6 +4,65 @@ description: Your first document
 ---
 
 Welcome to the docs! You can start writing documents in `/content/docs`.
+# Dashboard Overview
+
+The **Dashboard** in the platform provides a centralized view of the overall health, usage, and activity of your data ecosystem. It is divided into three main tabs:
+- **Analytics**
+- **Monitoring**
+- **Activity**
+
+---
+### 1. Analytics Tab
+
+This tab provides a high-level summary of the platform usage and performance:
+
+#### Key Metrics:
+- **Data Sources**: Shows the total number of connected data sources (e.g., `66`) and comparison to the previous month.
+- **Pipeline Uptime**: Displays the current operational uptime percentage. In the image shown, it is `0.0%`, with a 99% drop from last week.
+- **Active Alerts**: Indicates current system issues. Example: `2` alerts with levels like `Warning` or `Critical`.
+- **Data Usage**: Represents total data usage volume (e.g., `142`) and its trend (`↑12%` from last month).
+
+#### Analytics Panels:
+- **Data Volume by Source Row Count**: Displays how much data (in rows) has been ingested per source.
+- **Data Access Distribution**: Circular chart (donut/pie) showing how data is accessed or distributed across sources/destinations.
+- **Usage Trends (6 Months)**: Line chart showing platform usage over time.
+
+---
+
+### 2. Monitoring Tab
+
+This tab monitors pipeline health and data processing performance in real-time.
+
+#### Pipeline Health:
+Lists all key stages of the data pipeline and their health status:
+  - **Raw Data Ingest**: Status 
+  - **Silver Layer (ETL)**: Transformation layer 
+  - **Gold Layer (Migration)**: Final storage layer 
+  - **Schematization**: Schema mapping/handling 
+  - **Transformation**: Data cleaning or transformation stage 
+
+#### Pipeline Latency:
+Visual chart showing response or processing delays in milliseconds (e.g., data fetch, transformation, load).
+
+---
+
+### 3. Activity Tab
+
+This section tracks recent user activities and system events in real time.
+
+**Recent Activity Examples:**
+- Accessed Dashboard: Time taken to load the dashboard.
+- Accessed Auth: Retrieved authentication configuration.
+- Ingestion Status Checked: Checked the ingestion with a specific ID.
+- Accessed Sources: Viewed source configurations.
+
+
+Each activity log includes a completion time (e.g., `34.34ms`, `26.2ms`), showing system responsiveness.
+
+---
+
+> ✅ The dashboard enables users to monitor the health of data operations, track activity, and manage alerts and ingestion reliability in one place.
+
 
 ## What DataSage Do?
 
