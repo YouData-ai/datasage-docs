@@ -1,22 +1,20 @@
 ---
 title: Connections
-description: Your first document
+description: Your first Document
 ---
 
 Welcome to the docs! You can start writing documents in `/content/docs`.
+## Set Up a Connection Steps
 
-## New Source
+### Add New Source
 
 Set up a new source in DataSage is a quick and simple process! When viewing the DataSage UI, you'll see the main navigation bar on the left side of your screen ,click on **connection** tab. Click the **New Source** tab to bring up a list of all available sources.
 
 ![Connections UI](/images/connections.png)
 
-You can use the provided search bar, or simply scroll down the list to find the source you want to replicate data from. 
+You can use the provided search bar, or simply scroll down the list to find the source. 
 
-![Setup streams]()
-
-The left half of the page contains a set of fields that you will have to fill out. In the **Source name** field, you can enter a name of your choosing to help you identify this instance of the connector.
-Each connector in DataSage will have its own set of authentication methods and configurable parameters. 
+![Screenshot of the DataSage source list interface showing a searchable grid of available data connectors. The interface includes a search bar at the top and a grid of connector icons below. The environment is a clean, modern dashboard with a neutral tone. Visible text includes Search and connector names such as MSSQL. The overall tone is professional and user-friendly.](/images/list.png)
 
 ---
 
@@ -24,9 +22,6 @@ Each connector in DataSage will have its own set of authentication methods and c
 
 1. Go to the **Connection** section on the left sidebar.
 2. Click on **"New Source"**.
-
-![Setup streams]()
-
 
 ###  Step 2: Choose Any Connector
 
@@ -45,6 +40,8 @@ You will see a form titled **"Connect a Source"** with the following fields:
 - **Username**: Your MSSQL login username.
 - **Password**: Corresponding password.
 
+![Connections UI](/images/connect-source.png)
+
 ###  Step 4: Save and Test Connection
 
 - After filling out all required fields, click **"Test Connection"** (if available).
@@ -53,29 +50,21 @@ You will see a form titled **"Connect a Source"** with the following fields:
 You are now ready to ingest and query data from your MSSQL source in DataSage.Ai!
 
 ---
-
 **Important Note**
 
-###  Current Destination Setup: Amazon S3
+####  Current Destination Setup: Amazon S3
 
 Currently, the platform only supports **Amazon S3** as a destination. The S3 destination must be **pre-configured** before it can be used to store or send data.
 
-###  Future Support: Multiple Destination Connectivity
+####  Future Support: Multiple Destination Connectivity
 
 In the future, the platform will support **dynamic connection to multiple destinations**, similar to how multiple sources are currently supported.
 
 ---
 
-
 > This setup ensures scalable, pluggable, and reliable destination management, aligned with the way data sources are handled today.
 
 ---
-## What DataSage Do?
-
-<Cards>
-  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
 
 ## What DataSage Do?
 

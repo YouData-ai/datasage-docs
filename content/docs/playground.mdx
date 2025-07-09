@@ -1,0 +1,79 @@
+---
+title: Playground
+description: Your Playground Document
+---
+
+Welcome to the docs! You can start writing documents in `/content/docs`.
+## Playground Overview
+
+The **Playground** feature allows users to interactively query and explore data from any connected source. It provides a powerful and flexible interface for writing and executing SQL queries, viewing schema information, query history, exporting results and view API documentation.
+
+![Playground UI](/images/playground.png)
+
+### Step-by-Step Guide
+
+#### 1. Accessing the Playground
+
+- Navigate to the **Playground** section from the side bar.
+- The Playground interface is designed to test and execute queries on data sources you have already connected.
+
+#### 2. Selecting a Data Source
+- On the Playground page, you will see a list of available data sources.
+- Select the desired **source Name**.
+- Upon selecting, the interface redirects you to the **SQL Query Editor** view.
+
+#### 3. Viewing API Documentation
+
+- **Top Right Corner**: API documentation for the selected source is displayed in the **top right section** of the Playground interface.
+- This section provides reference for available endpoints, parameters, methods, and usage examples.
+- It is especially useful for understanding the structure and capabilities of API-based sources.
+- Developers can use this documentation to integrate with the source programmatically.
+
+#### 4. Query Editor Overview
+
+Once inside the SQL Query Editor:
+
+- **Write Queries**: Use the main editor to write SQL queries based on the selected source.
+- **Run Query**: Click on the **"Execute"** button to run your query.
+- **View Result**: Results of the query are displayed in a tabular format below the editor.
+- **Clear Query**: Use the **"Clear"** button to remove the current query from the editor.
+
+
+#### 5. Viewing Schema
+- The **Schema** section is displayed on the left-hand panel.
+- It provides real-time structural information about tables, columns, data types, etc., within the selected source.
+- Helps users in understanding the database structure before writing queries.
+
+#### 6. Query History
+- A **Query History** panel is available, typically on the left or bottom side.
+- Users can revisit and reuse previous queries easily from this history.
+
+#### 7. Exporting Query Results
+- After executing a query, users have the option to **Export** the result.
+- Export formats may include  JSON based on the platform’s capability.
+
+#### 8. Real-Time Data Fetching
+- The Playground allows you to fetch **real-time data** from the connected database.
+- This includes data that was **newly added** to the database **after the ingestion process**,you can still view the **latest entries** directly by querying from the Playground.
+- Such data might not be present in previously ingested versions, but can be queried live using Playground.
+
+![Playground UI](/images/sql.png)
+
+###  Summary
+Playground is a comprehensive SQL-based tool within the platform that enables:
+- Interactive querying
+- Real-time data inspection
+- Schema exploration
+- Query management
+- API documentation access
+- Data export capabilities
+
+It is a vital feature for analysts, developers, and data engineers who need to interact with live data sources dynamically.
+
+
+## What DataSage Do?
+
+<Cards>
+  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+</Cards>

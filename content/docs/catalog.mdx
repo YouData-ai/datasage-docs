@@ -1,15 +1,13 @@
 ---
 title: Catalog
-description: Your Catalog document
+description: Your Catalog Document
 ---
 
 Welcome to the docs! You can start writing documents in `/content/docs`.
 
 ## Catalog Overview
 
-The **Catalog** module provides a centralized view of all ingested data, organized by database, tables, and schema structure. It allows users to explore, validate, and document data post-ingestion.
-
----
+The **Catalog** module provides a centralized view of all ingested data, organized by database, tables, and schema structure. It allows users to explore, validate, and Document data post-ingestion.
 
 ### Database View
 
@@ -34,6 +32,8 @@ Clicking on a table name from the entity list opens its **Table Details** view. 
   - Data Quality Score (e.g., 45%)
   - Warning if columns have issues (e.g., 55 columns with issues)
 
+![Catalog UI](/images/catalog.png)
+
 - **Schema Details**:
   - Field Name and Type (e.g., `ACCOUNT_ID` - `Int64`, `IS_EMAIL_ELIGIBLE` - `Boolean`)
   - Key Type (Primary/Foreign)
@@ -44,16 +44,17 @@ Clicking on a table name from the entity list opens its **Table Details** view. 
   - Allows users to upload files related to the table to enrich metadata contextually.
 
 - **Additional Metadata**:
+  - Edit Data Description(About)
   - Tags
   - Data Type Distribution
   - Preprocessing Suggestions (if applicable)
-
+  - Data Transformations
+  
+![Catalog UI](/images/schema.png)
 
 ---
 
-> ✅ Use the **Catalog** to explore schema structure, manage metadata, monitor data quality, and enrich datasets for downstream use.
-
-
+>  Use the **Catalog** to explore schema structure, manage metadata, monitor data quality, and enrich datasets for downstream use.
 
 
 ## What DataSage Do?

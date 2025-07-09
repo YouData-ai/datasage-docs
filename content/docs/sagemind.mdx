@@ -1,0 +1,147 @@
+---
+title: SageMind
+description: Your SageMind Document
+---
+
+Welcome to the docs! You can start writing documents in `/content/docs`.
+
+## SageMind Documentation 
+
+SageMind is an intelligent conversational chatbot available within the DataSage platform. It enables users to interact with their data in a smart and efficient way. Users can ask questions related to available data sources, upload files for analysis, visualize the data, and get summaries—all through a chat interface.
+
+![SageMind UI](/images/sagemind.png)
+---
+###  What is SageMind?
+
+SageMind is a conversational assistant that enables users to:
+
+- Ask questions related to DataSage.
+- Upload data files (CSV, PDF, JSON, XLSX).
+- Generate visual graphs based on the uploaded data.
+- Get summary and insights from files.
+- Perform in-depth data exploration.
+- Retrieve only the data that is available on the DataSage platform.
+
+---
+
+####  Key Features
+
+1. **Conversational Interface**  
+   - Ask questions about your data directly via chat.
+   - Get intelligent suggestions and tips based on your queries.
+
+2. **File Upload Support**  
+   - Supports `.csv`, `.xlsx`, `.json`, and `.pdf` files.
+   - Files can be uploaded directly via the chat interface.
+
+3. **Graph Generation**  
+   - Create various types of visualizations such as:
+     - Line Chart
+     - Bar Chart
+     - Pie Chart
+     - Area Chart
+     - Scatter Plot
+
+4. **File Summary**  
+   - Automatically generates a summary of uploaded files.
+   - Identifies columns, value ranges, missing data, etc.
+
+5. **Deep Data Exploration**  
+   - Users can drill down into the data and ask questions like:
+     - "Show top 5 rows"
+     - "Filter data where sales > 5000"
+     - "Get average value of column X"
+
+6. **Connected to DataSage**  
+   - Only data that is uploaded or already available within the DataSage platform is accessible.
+   - Cannot access external or unauthorized data sources.
+
+---
+
+### Step-by-Step Usage
+
+#### 1: Start a New Chat
+- Click the **"+ New Conversation"** button to begin.
+
+#### Step 3: Upload a File (Optional)
+- Use the **Upload files** section to drag and drop or browse for your `.csv`, `.xlsx`, `.json`, or `.pdf` file.
+
+#### Step 4: Ask Questions
+- You can ask:
+  - "What are the top 10 sales records?"
+  - "What does this dataset contain?"
+  - "What is the average of the profit column?"
+
+#### Step 5: Generate Graphs
+- Ask SageMind to create a graph:
+  - "Create a line chart of sales over time"
+  - "Show a bar graph of revenue by region"
+  - "Pie chart of category distribution"
+
+#### Step 6: Get Data Summary
+- Request a summary of the uploaded dataset:
+  - "Summarize this file"
+  - "Show column statistics"
+  - "Which columns have missing values?"
+
+---
+### Using Slash (/) Command in SageMind to Work with Data
+
+This document explains how to use the slash (/) command in SageMind to interact with pre-connected data sources on the DataSage platform.
+
+![SageMind UI](/images/sagemindchat.png)
+
+### Step-by-Step Usage
+
+#### 1. Start a New Chat
+- Open **SageMind** from the platform.
+- Click on **New Conversation** to begin a new chat.
+
+#### 2. Use the Slash Command `/`
+- In the chat input box, type `/`.
+- A command panel (dropdown menu) will automatically appear.
+
+#### 3. Select "Work with Data"
+- From the dropdown menu, click on **"Work with data"**.
+- This opens a list of all sources that have already been existing in DataSage.
+
+#### 4. Choose a Data Source
+- Select any one of the listed connections 
+- These are the sources previously configured in the DataSage platform.
+
+#### 5. Ask Questions on the Selected Data
+After selecting the source, you can perform various actions by asking natural language queries like:
+
+- `summary` — To get a summary of the dataset (including column names, data types, row count, etc.).
+- `show bar chart of gender` — To generate specific charts and graphs.
+- `show null value columns` — To check data quality.
+- `top 5 departments with highest salary` — For filtered insights.
+- `create line graph of sales by month` — For time-series or trend analysis.
+
+#### 6. Get Instant Answers
+- SageMind will fetch the data and respond with summaries, visualizations (bar, pie, line charts), and analytics based on your queries.
+
+#### Summary
+
+SageMind's `/` command enables users to:
+- Quickly access all available connected data sources.
+- Interact with those sources using natural language.
+- Generate summaries, perform analysis, and create visualizations easily.
+
+This feature makes data exploration intuitive and code-free for all users.
+
+---
+
+####  Notes
+
+- SageMind only analyzes files and datasets available within DataSage.
+- Ensure your file is uploaded before asking related questions.
+- You can manage past conversations from the sidebar history list.
+
+
+## What DataSage Do?
+
+<Cards>
+  <Card title="learn more about DataSage" href="https://nextjs.org/docs" />
+  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+</Cards>
