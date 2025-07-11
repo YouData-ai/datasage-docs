@@ -1,9 +1,171 @@
 ---
 title: Pipeline
-description: Your Pipeline Document
+description: Automates and manages data transformation workflows.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+## Data Transformation Pipeline Process
+
+The **Transformation** module in the DataSage Platform pipeline is used to clean, structure, enrich, and convert raw ingested data into a form that is useful for storage, analysis, and visualization. This module acts as an intermediate step between ingestion and storage or consumption and provides a wide range of operations for transforming data records.
+
+![Pipeline UI](/images/pipeline.png)
+
+#### Step 1: Open the Pipeline Section
+
+1. Navigate to the **left-side menu** and click on **Pipeline**.
+2. The interface will show the current pipelines (if any). In your case, it shows:
+   - Status: `Success/Failed`
+   - Message: `No data` (indicating no pipeline has been created yet).
+
+
+#### Step 2: Create a New Pipeline
+
+- Click on the **“+ New Pipeline”** button on the top right corner.
+- You will be redirected to the **catalogue datasets** section where you can select a source dataset for transformation.
+
+![Pipeline UI](/images/pipelinecatlog.png)
+
+#### Step 3: Configure the Pipeline
+
+#### 1. Filter Rows
+         The **Filter Rows** operation allows users to include or exclude specific rows from the dataset based on custom conditions.
+
+ **How It Works:**
+- You define a condition using fields and operators (e.g., `age > 30`, `status == 'Active'`).
+- DataSage processes each row and checks if it satisfies the condition.
+- Only rows matching the condition will be retained (or excluded, based on logic).
+
+ **Example Use Cases:**
+- Keep records where `OrderStatus = 'Completed'`.
+- Exclude rows where `Revenue < 1000`.
+
+#### 2. Select Columns
+The **Select Columns** operation helps reduce dataset width by keeping only necessary fields.
+
+**How It Works:**
+- You select specific columns that are relevant for analysis or next transformation steps.
+- All unselected columns are dropped from the data stream.
+
+**Example Use Cases:**
+- From a dataset of 30 fields, only retain `CustomerName`, `OrderDate`, `TotalAmount`.
+- Exclude metadata columns like `CreatedTimestamp`, `LastUpdatedBy`.
+
+#### 3. Rename Columns
+
+**Rename Columns** enables you to change the column names to more meaningful or standardized names for better readability and consistency.
+
+**How It Works:**
+- You provide a mapping of current column names to desired names.
+- DataSage updates the schema to reflect these changes.
+ 
+  **Example Use Cases:**
+- Rename `cust_id` to `CustomerID`.
+- Change `total_amt` to `TotalAmount`.
+
+#### 4. Add Calculated Column
+
+The **Add Calculated Column** operation allows you to derive a new column using an expression or formula based on existing columns.
+
+**How It Works:**
+- You define a new column and specify a formula, e.g., `TotalAmount * 0.18` to get tax.
+- DataSage evaluates the expression row-wise and appends the result as a new column.
+
+**Supported Features:**
+- Arithmetic operations (`+`, `-`, `*`, `/`)
+- String manipulation (`concat`, `lower`, `upper`)
+- Date/time functions
+- Conditional expressions (`if`, `case`)
+
+ **Example Use Cases:**
+- Add `DiscountedPrice = Price * (1 - DiscountPercent/100)`
+- Add `FullName = concat(FirstName, ' ', LastName)`
+
+
+
+---
+
+### How It Works in DataSage Platform (Backend Logic):
+
+1. **Pipeline Creation**: You first create or open a pipeline and add a data source (e.g., PostgreSQL, REST API, file).
+2. **Transformation Step**: You add a transformation step where you can stack multiple filters in sequence.
+3. **Each Filter is Stateless**: Each transformation filter processes data independently based on current data snapshot.
+4. **Execution**: Once transformations are applied, DataSage uses its data engine to apply SQL-like or expression-based logic to stream the changes.
+5. **Preview and Output**: Users can preview the result after transformation and choose to save or export it.
+
+---
+
+#### Step 4: Apply Configuration
+
+- After selecting a transformation, configure its options in the **Configuration** panel on the right.
+- Example: If you selected "Filter Rows", define the filter condition like `AGE > 25`.
+
+#### Step 5: Run the Pipeline
+
+1. Once all transformations are configured and reviewed:
+   - Click the **Run Pipeline** button (top-right).
+2. The platform will execute the transformation and update the data pipeline status.
+3. After successful execution, the newly created pipeline will be visible in the main **Pipeline** listing screen.
+
+![Pipeline UI](/images/configpipe.png)
+
+---
+### Transformation Execution Flow
+
+When you select a transformation filter (e.g., Filter Row, Select Column, Rename Column, Add Calculated Column) and execute it in the DataSage Pipeline, the platform follows a structured process to apply the changes. Below are the detailed steps that describe what happens during and after execution:
+
+#### Step-by-Step Execution Process
+
+####  1. Apply a Transformation Filter
+- Choose a transformation operation such as **Filter Row**, **Select Column**, etc.
+- Configure the filter with required inputs (e.g., conditions, columns, expressions).
+- Click on the **Complete** or **Run** button to execute the transformation.
+
+![Pipeline UI](/images/failedpipe.png)
+
+####  2. Transformation Execution Status
+- After execution, the platform displays a status message:
+  -  **Success**: The transformation has been applied successfully.
+  -  **Failed**: The transformation has failed due to an error.
+
+
+#### 3. Handling Transformation Failure
+If the transformation fails, the following details will be shown:
+**Message Display**
+- A clear **“Transformation Failed”** message is displayed at the top of the module.
+
+![Pipeline UI](/images/overviewpi.png)
+
+**Error Logs Section**
+- Below the failure message, an **Error Log** section appears.
+- This section provides technical details of the error such as:
+  - Syntax errors in conditions or expressions.
+  - Missing or undefined columns.
+  - Invalid operations (e.g., dividing by zero, wrong data type).
+
+![Pipeline UI](/images/logpipe.png)
+
+### 4. Schema Transformation Overview 
+   - Regardless of success or failure, the platform displays the schema transformation summary:
+
+**Source Schema (Undefined Columns)**
+   - Shows the columns present in the input dataset before transformation.
+   - Each column listed with its name and data type.
+
+If a column is used but not found, it appears as undefined.
+
+**Result Schema (Undefined Columns)**
+  - Displays the resulting schema after applying the transformation.
+  - Columns added (e.g., calculated columns), renamed, or removed are reflected here.
+  - If output column definitions have errors, they also show as undefined.
+
+![Pipeline UI](/images/schemapipe.png)
+
+#### Best Practices
+- Always verify column names and data types.
+- Use Preview or Test Run options if available before finalizing.
+- Check the Error Log for detailed troubleshooting information in case of failure.
+- Use clear and unique names while renaming or creating calculated columns to avoid conflicts.
+
+  ---
 
 
 ## What DataSage Do?

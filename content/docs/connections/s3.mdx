@@ -1,12 +1,9 @@
 ---
 title: S3
-description: Your S3 Document
+description: Amazon's object storage service for scalable file storage in the cloud.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
-
-# S3
-### Amazon S3 Bucket Connection on DataSage.ai
+### Amazon S3 Bucket Connection Set up
 
 This page contains the setup guide and reference information for the [S3](https://docs.aws.amazon.com) source connector.
 
@@ -14,6 +11,7 @@ This page contains the setup guide and reference information for the [S3](https:
 warning
 
 Using cloud storage may incur egress costs. Egress refers to data that is transferred out of the cloud storage system, such as when you download files or access them from a different location. For detailed information on egress costs, please consult the [AWS S3 pricing guide](https://aws.amazon.com/s3/pricing/).
+
 
 ---
 
@@ -123,8 +121,6 @@ S3 authentication using an IAM role member must be enabled by a member of the Da
 
 7. Add a stream
 
-
-
    1. Choose the **File Format**
    2. In the **Format** box, use the dropdown menu to select the format of the files you'd like to replicate. The supported formats are **CSV**, **Parquet**, **Avro** and **JSONL**. Toggling the **Optional fields** button within the **Format** box will allow you to enter additional configurations based on the selected format. For a detailed breakdown of these settings, refer to the [File Format section](#file-format-settings) below.
    3. Give a **Name** to the stream
@@ -153,7 +149,7 @@ All other fields are optional and can be left empty. Refer to the [S3 Provider S
 
  **URL:** `https://datasage-new.youdata.ai/connection/new/s3`
 
----
+![S3 UI](/images/awss3.png)
 
 ###  Required Fields
 
@@ -215,7 +211,9 @@ We want to pick up part1.csv, part2.csv and part3.csv (excluding another\_part1.
 * We can also recursively wildcard, so adding the pattern `extras/**/*.csv` would pick up any csv files nested in folders below "extras", such as "extras/misc/another\_part1.csv".
 
 As you can probably tell, there are many ways to achieve the same goal with path patterns. We recommend using a pattern that ensures clarity and is robust against future additions to the directory structure.
+
 ---
+
 ## S3 Provider Settings[​](#s3-provider-settings "Direct link to S3 Provider Settings")
 
 * **AWS Access Key ID**: One half of the [required credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for accessing a private bucket.
@@ -225,7 +223,7 @@ As you can probably tell, there are many ways to achieve the same goal with path
 ---
 
 
-###  Security Best Practices
+### Best Practices
 
 - Use **IAM roles** with limited read-only permissions.
 - Rotate your access keys regularly.

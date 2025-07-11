@@ -1,68 +1,94 @@
 ---
 title: Dashboard
-description: Your first document
+description: Visualizes key metrics, trends, and system activities.
 ---
-
-Welcome to the docs! You can start writing documents in `/content/docs`.
-# Dashboard Overview
 
 The **Dashboard** in the platform provides a centralized view of the overall health, usage, and activity of your data ecosystem. It is divided into three main tabs:
 - **Analytics**
 - **Monitoring**
 - **Activity**
 
+![Dashboard UI](/images/dashboard.png)
+
 ---
-### 1. Analytics Tab
+### 1. Analytics 
 
 This tab provides a high-level summary of the platform usage and performance:
 
-#### Key Metrics:
-- **Data Sources**: Shows the total number of connected data sources (e.g., `66`) and comparison to the previous month.
-- **Pipeline Uptime**: Displays the current operational uptime percentage. In the image shown, it is `0.0%`, with a 99% drop from last week.
-- **Active Alerts**: Indicates current system issues. Example: `2` alerts with levels like `Warning` or `Critical`.
-- **Data Usage**: Represents total data usage volume (e.g., `142`) and its trend (`↑12%` from last month).
+#### View Summary Metrics
+You will see four key metric cards at the top:
+- **Data Sources**: Total number of integrated data sources. Example: `66`
+- **Pipeline Uptime**: Current uptime of the data pipeline. Example: `100.0%`
+- **Active Alerts**: Number of ongoing system alerts with severity tags (e.g., Warning, Critical).
+- **Data Usage**: Count of total operations or accesses performed on data. Example: `142`
 
-#### Analytics Panels:
-- **Data Volume by Source Row Count**: Displays how much data (in rows) has been ingested per source.
-- **Data Access Distribution**: Circular chart (donut/pie) showing how data is accessed or distributed across sources/destinations.
+#### Analytics Panels
+This section gives graphical insights:
+- **Data Volume by Source Row Count**:A bar chart showing how many rows of data exist per source (e.g., File, MySQL, PostgreSQL, Snowflake).
+- **Data Access Distribution** : A donut chart showing how different data sources are being accessed or queried by users.
 - **Usage Trends (6 Months)**: Line chart showing platform usage over time.
+
+![Analytics dashboard displaying bar chart of data volume by source, donut chart of data access distribution, and line chart of usage trends over six months. The interface shows metric cards for data sources, pipeline uptime, active alerts, and data usage at the top. The environment is a clean, modern dashboard with a focus on clarity and accessibility. No visible text in the charts. The tone is professional and informative.](/images/anylitic.png)
 
 ---
 
-### 2. Monitoring Tab
+### 2. Monitoring 
 
 This tab monitors pipeline health and data processing performance in real-time.
 
-#### Pipeline Health:
-Lists all key stages of the data pipeline and their health status:
-  - **Raw Data Ingest**: Status 
-  - **Silver Layer (ETL)**: Transformation layer 
-  - **Gold Layer (Migration)**: Final storage layer 
-  - **Schematization**: Schema mapping/handling 
-  - **Transformation**: Data cleaning or transformation stage 
+### Key Components Monitored
 
-#### Pipeline Latency:
-Visual chart showing response or processing delays in milliseconds (e.g., data fetch, transformation, load).
+| Component              | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| **Raw Data Ingest**    | Indicates the status of data coming directly from the source.               |
+| **Silver Layer (ETL)** | Reflects Extract-Transform-Load operations for cleaned intermediate storage.|
+| **Gold Layer (Migration)** | Shows migration status of refined data for analytics.                |
+| **Schematization**     | Ensures the schema mapping and formatting of data.                          |
+| **Transformation**     | Reflects the final transformation applied to data before usage.             |
+
+Each component shows:
+- **Status**: (Healthy, Unknown, Alert)
+- **Health Bar**: Indicates processing completeness in percentage.
+
+
+###  Pipeline Latency Chart
+- Displays the processing time for each pipeline stage.
+- Helps identify performance bottlenecks.
+- Example: If `Raw Data Ingest` takes **389,600 ms** and `Transformation` only **700 ms**, it indicates potential delay upstream.
+
+![Dashboard UI](/images/monitord.png)
+
+### Active Alerts
+- Lists any critical or warning alerts based on component status.
+- Assists in prompt debugging and system reliability.  
 
 ---
 
-### 3. Activity Tab
+### 3. Activity 
 
 This section tracks recent user activities and system events in real time.
 
-**Recent Activity Examples:**
-- Accessed Dashboard: Time taken to load the dashboard.
-- Accessed Auth: Retrieved authentication configuration.
-- Ingestion Status Checked: Checked the ingestion with a specific ID.
-- Accessed Sources: Viewed source configurations.
+**Key Activity Logs**
 
+| Activity Example                     | Description                                                                 |
+|--------------------------------------|-----------------------------------------------------------------------------|
+| **Accessed Dashboard**              | User viewed a specific dashboard area (e.g., Overview, Settings).           |
+| **Data Transformation Completed**   | Indicates a successful transformation job with data size and duration.      |
 
-Each activity log includes a completion time (e.g., `34.34ms`, `26.2ms`), showing system responsiveness.
+###  How It Helps
+- Tracks when users interacted with the dashboard and modules.
+- Helps admins audit data operations.
+- Useful for debugging and understanding user behavior.
+
+![Dashboard UI](/images/activityd.png)
 
 ---
 
->  The dashboard enables users to monitor the health of data operations, track activity, and manage alerts and ingestion reliability in one place.
+###  Benefits
 
+- Real-time health check of the pipeline flow.
+- Performance diagnostics via latency analysis.
+- Transparent activity trail for operational oversight.
 
 ## What DataSage Do?
 

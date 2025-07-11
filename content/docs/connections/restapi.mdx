@@ -1,23 +1,22 @@
 ---
 title: RestAPI
-description: Your RestAPI Document
+description: A standard interface to connect and retrieve data from web services.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
-# RestAPI
-
-###  REST API Connection Documentation
+###  REST API Connection Set up
 
 This guide provides steps to connect and configure a REST API as a data source on the DataSage platform.
 
----
 
-###  Connection Path
+
+####  Connection Path
 `Connection > New Connection > REST API`
 
----
+![RestAPI UI](/images/restapi1.png)
 
-###  Required Fields
+![RestAPI UI](/images/restapi2.png)
+
+####  Required Fields
 
 | Field                  | Description                                                                 |
 |------------------------|-----------------------------------------------------------------------------|
@@ -28,7 +27,7 @@ This guide provides steps to connect and configure a REST API as a data source o
 
 ---
 
-###  Headers
+####  Headers
 
 You can add headers required for API requests. Example:
 
@@ -41,7 +40,7 @@ Use the `+ Add Header` button to include multiple headers.
 
 ---
 
-###  Query Parameters
+####  Query Parameters
 
 Use query parameters to customize requests. Example:
 
@@ -53,14 +52,14 @@ Use `+ Add Query Parameter` to append additional parameters.
 
 ---
 
-###  Incremental Fetching
+####  Incremental Fetching
 
 - **Increment Type**: Specify the field (e.g., `offset`, `timestamp`) for incremental data fetching.
 - **Is Incremental**: Check if the data fetch should support incremental updates.
 
 ---
 
-###  Pagination Configuration
+####  Pagination Configuration
 
 Enable and configure pagination to fetch paginated API responses.
 
@@ -75,7 +74,7 @@ Enable and configure pagination to fetch paginated API responses.
 
 ---
 
-###  Steps to Connect
+####  Steps to Connect
 
 1. Navigate to **Connection > New Connection > REST API**.
 2. Fill in the required fields:

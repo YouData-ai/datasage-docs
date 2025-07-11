@@ -1,10 +1,63 @@
 ---
 title: Monitoring
-description: Your Monitoring Document
+description: Tracks the status, performance, and logs of data activities.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+In the DataSage platform, Monitoring refers to the real-time tracking, validation, and health-checking of all connected data sources and their ingestion activities. Its purpose is to:
 
+ - Ensure data pipelines are running correctly.
+ - Detect any failures or issues early.
+ - Provide performance metrics such as uptime, latency, row processing, etc.
+ - Maintain data quality and ingestion reliability.
+
+
+![Monitoring UI](/images/monitorl.png)
+---
+
+### How Monitoring Works
+
+When a data source is connected in DataSage, the platform initiates monitoring automatically. Here's how it functions:
+
+1. **Connection Establishment**  
+   - A secure connection is created to the data source using authentication credentials.
+   - The source is continuously checked for its availability (status: `Online` or `Offline`).
+
+2. **Ingestion Execution**  
+   - Scheduled or manual ingestion jobs fetch data from the source.
+   - During each run, metadata like execution time, response time, and job status are collected.
+   - If any transformation, filtering, or validation is applied, its success or failure is also tracked.
+
+3. **Real-Time Monitoring Engine**
+    - DataSage logs each ingestion attempt, success/failure rate, and processed data metrics.
+    - These logs are evaluated in real-time or batch windows to compute uptime, average execution time, and total processed entities.
+
+4. **Error Detection and Logging**
+   - Failures (e.g., authentication errors, timeouts, missing schema) are captured under the Issues or Logs tab.
+   - Users are notified and can re-run failed jobs or inspect errors.
+
+![Monitoring UI](/images/monitorv.png)
+
+#### Example: MySQL Monitoring 
+
+From a typical MySQL source:
+-  Connection Status: **Online**
+-  Uptime: **100%**
+-  Total Jobs: **4**
+-  Total Rows Processed: **15,087**
+-  Total Tables Processed: **10**
+-  Average Execution Time: **3.42 sec**
+-  Success Rate: **100%**
+-  Last Execution: `7/11/2025, 6:26:00 AM`
+
+This means DataSage is consistently syncing data from this MySQL source without failures, confirming good integration and performance.
+
+---
+
+### Why Monitoring Matters
+- **Reliability**: Ensures data flows as expected from source to destination.
+- **Traceability**: Keeps a history of data movements and status for auditing.
+- **Performance Tuning**: Identifies slow or failed pipelines to optimize performance.
+- **Alerts and Debugging**: Helps quickly resolve issues without data loss.
 
 ## What DataSage Do?
 

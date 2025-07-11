@@ -1,58 +1,18 @@
 ---
 title: Ingestions
-description: Your Ingestions Document
+description: Imports and processes data from connected sources into the system.
+
 ---
-
-Welcome to the docs! You can start writing Documents in `/content/docs`.
-
-## Ingestion
-
-**Ingestion** in the context of data platforms refers to the process of importing or transferring data from various sources into a system for processing, storage, or analysis. The sources may include databases, APIs, cloud storage, and more.
 
 ## Set Up a Ingestion
 
-This Document outlines the step-by-step process of how to perform data ingestion using predefined connections and sources in [Datasage (DataSage.AI)](https://datasage-new.youdata.ai). The platform supports a wide variety of connectors, including SQL databases, Files, cloud storage, APIs, and more.
+The platform supports a wide variety of connectors, including SQL databases, Files, cloud storage, APIs, and more.
 
 ![Ingestions UI](/images/ingestion.png)
 
 ### View Available Sources
 - All connected sources (e.g., MySQL, MongoDB, REST API, etc.) are listed here.
 - Each source is represented as a collapsible item.
-
-###  Use the Expand Icon
-- Next to each source name, you will see an **Expand icon** (usually a right-arrow or plus sign).
-- **Click** on this Expand icon to reveal the **sub-sources** or **individual components** under that source.
-  - For example, databases under a database server, or endpoints under an API source.
-
-###  Explore Sub-Sources
-- Once expanded, you can view detailed sub-source entries like:
-  - Database names
-  - Tables or Collections
-  - File paths, etc.
-
-###  Apply Filters
-- On the top right (or left) of the source list, a **Filter option** is available.
-- Click on **Filter**, and a dropdown or popup will appear.
-- You can filter sources based on:
-  - Source type (e.g., MySQL, MongoDB, API)
-  - Status (e.g., Active, Inactive, Failed)
-  - Source name 
-  - Data Range
-- This helps in quickly narrowing down to specific sources or sub-sources.
-
-### Fields Explanation
-
-| Field | Description |
-|-------|-------------|
-| **Source Name** | The name or type of connection used to ingest data (e.g., PostgreSQL, Hosted Data, Snowflake). |
-| **Total Ingestions** | Number of ingestion events or attempts executed for that source. |
-| **Total Tables** | Total number of distinct tables or datasets ingested from the source. |
-| **Total Rows** | Total number of data rows successfully ingested. |
-| **Last Ingestion** | Timestamp of the most recent successful ingestion. |
-| **Status** | The current status of ingestion – "Completed" means successful data loading. |
-| **Ingestion Time** | Duration it took to complete the ingestion (shown for some entries). |
-
----
 
 ### 1. Connection Setup
 Before starting the ingestion, you must first create a connection. This connection will allow the platform to access the data from your selected source.
@@ -78,10 +38,13 @@ After selecting the source:
 Depending on the type of source selected:
 - For sources like **Microsoft SQL Server**, **MySQL**, **PostgreSQL**, etc., you will be required to select both a **database** and a specific **table**.
 ![Ingestions UI](/images/stream.png)
-- For sources like **REST API**, **Snowflake**, etc., you may only need to select the **database**, and not a specific table.
+- For **Snowflake** you may only need to select the **database**, and not a specific table.
 
 
 ![Ingestions UI](/images/indatabse.png)
+
+- For **RestApi** you may only need to select the **Json**, and not a specific table.
+![Ingestions UI](/images/restapi.png)
 
 ### 5. Configuration
 After selecting both source and destination, proceed to **configure the connection**. This configuration includes the following settings:
@@ -161,10 +124,6 @@ Each log line contains:
 - `CLEAR_LAYER_API_CALLING / CALLED`: Final cleanup or layer processing
 
 ![Ingestions UI](/images/log.png)
-
----
-
->  Use the **Status** tab to verify outcome and record count, and **Logs** tab to troubleshoot or audit the ingestion steps.
 
 ---
 

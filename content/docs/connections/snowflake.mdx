@@ -1,21 +1,21 @@
 ---
 title: Snowflakes
-description: Your Snowflakes Document
+description: A cloud-based data platform for scalable storage and analytics.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
-# Snowflake
 Setting up the Snowflake destination connector involves setting up Snowflake entities (warehouse, database, schema, user, and role) in the Snowflake console and configuring the Snowflake destination connector using the Datasage UI.
 
 This page describes the step-by-step process of setting up the Snowflake destination connector.
 
-### Snowflake Connection on DataSage.ai
-
-This guide provides detailed instructions for connecting a Snowflake data warehouse to the DataSage.ai platform.
+![SnowflakeUI](/images/snowflakes1.png)
 
 ---
-## Setup guide[​](#setup-guide "Direct link to Setup guide")
-### Step 1: Set up DataSage-specific entities in Snowflake[​](#step-1-set-up-datasage-specific-entities-in-snowflake "Direct link to Step 1: Set up datasage-specific entities in Snowflake")
+
+### Snowflake Connection Set up
+
+
+### Setup guide[​](#setup-guide "Direct link to Setup guide")
+#### Step 1: Set up DataSage-specific entities in Snowflake[​](#step-1-set-up-datasage-specific-entities-in-snowflake "Direct link to Step 1: Set up datasage-specific entities in Snowflake")
 
 To set up the Snowflake destination connector, you first need to create DataSage-specific Snowflake entities (a warehouse, database, schema, user, and role) with the `OWNERSHIP` permission to write data into Snowflake, track costs pertaining to DataSage, and control permissions at a granular level.
 
@@ -28,17 +28,17 @@ You can use the following script in a new [Snowflake worksheet](https://docs.sno
    **Note:** Make sure you follow the [Snowflake identifier requirements](https://docs.snowflake.com/en/sql-reference/identifiers-syntax.html) while renaming the resources.
 3. Run the script using the [Worksheet page](https://docs.snowflake.com/en/user-guide/ui-worksheet.html) or [Snowsight](https://docs.snowflake.com/en/user-guide/ui-snowsight-gs.html). Make sure to select the **All Queries** checkbox if using the Classic Console or select and highlight the entire query if you are using Snowsight.
 
-### Step 2: Set up a data loading method[​](#step-2-set-up-a-data-loading-method "Direct link to Step 2: Set up a data loading method")
+#### Step 2: Set up a data loading method[​](#step-2-set-up-a-data-loading-method "Direct link to Step 2: Set up a data loading method")
 
 DataSagee uses Snowflake’s [Internal Stage](https://docs.snowflake.com/en/user-guide/data-load-local-file-system-create-stage.html) to load data.
 
 Make sure the database and schema have the `USAGE` privilege.
 
-### Step 3: Set up Snowflake as a destination in DataSage[​](#step-3-set-up-snowflake-as-a-destination-in-datasage "Direct link to Step 3: Set up Snowflake as a destination in datasage")
+#### Step 3: Set up Snowflake as a destination in DataSage[​](#step-3-set-up-snowflake-as-a-destination-in-datasage "Direct link to Step 3: Set up Snowflake as a destination in datasage")
 
 Navigate to the DataSage UI to set up Snowflake as a destination. You can authenticate using username/password or key pair authentication:
 
-### Login and Password[​](#login-and-password "Direct link to Login and Password")
+ **Login and Password[​](#login-and-password "Direct link to Login and Password")**
 | Field                                                                                                 | Description                                                                                                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Host](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html)                        | The host domain of the snowflake instance (must include the account, region, cloud environment, and end with snowflakecomputing.com).|
@@ -52,16 +52,14 @@ Navigate to the DataSage UI to set up Snowflake as a destination. You can authen
 
 ---
 
-###  Connect a Source: Snowflake
+####  Connect a Source: Snowflake
 
 To integrate your Snowflake environment, navigate to:
 
  **URL:** `https://datasage-new.youdata.ai/connection/new/snowflake`
 
----
 
-
-### 📝 Required Fields
+####  Required Fields
 
 | Field        | Required | Description |
 |--------------|----------|-------------|
@@ -78,7 +76,7 @@ To integrate your Snowflake environment, navigate to:
 ---
 
 
-## Snowflake tutorials[​](#snowflake-tutorials "Direct link to Snowflake tutorials")
+### Snowflake tutorials[​](#snowflake-tutorials "Direct link to Snowflake tutorials")
 
 Now that you have set up the Snowflake destination connector, check out the following Snowflake tutorials:
 
@@ -88,14 +86,14 @@ Now that you have set up the Snowflake destination connector, check out the foll
 * [Orchestrate ELT pipelines with Prefect, datasage and dbt](https://datasage.com/tutorials/elt-pipeline-prefect-datasage-dbt)
 ---
 
-###  Tips
+####  Tips
 
 - Ensure that your Snowflake role has read access to the chosen schema.
 - The account identifier usually includes the Snowflake region.
 
 ---
 
-###  Security Tips
+####  Security Tips
 
 - Never share account credentials publicly.
 - Rotate passwords periodically and use MFA where available.

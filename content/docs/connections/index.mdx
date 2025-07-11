@@ -1,15 +1,17 @@
 ---
 title: Connections
-description: Your first Document
+description: Connects to various data sources for integration into the platform.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+The Connection module in DataSage is the foundational layer that enables the platform to connect external data sources to the DataSage environment. It acts as a bridge between the platform and external data sources. . It allows users to configure and manage secure connections to databases (e.g., MySQL, PostgreSQL), APIs (e.g., REST), cloud platforms (e.g., Snowflake, AWS S3), and other file-based or service-based sources. Without configuring a connection, no ingestion, transformation, monitoring, or querying can be performed.
+
+
+
 ## Set Up a Connection Steps
 
 ### Add New Source
 
-Set up a new source in DataSage is a quick and simple process! When viewing the DataSage UI, you'll see the main navigation bar on the left side of your screen ,click on **connection** tab. Click the **New Source** tab to bring up a list of all available sources.
-
+Set up a new source in DataSage is a quick and simple process! When viewing the DataSage UI.
 ![Connections UI](/images/connections.png)
 
 You can use the provided search bar, or simply scroll down the list to find the source. 
@@ -18,34 +20,65 @@ You can use the provided search bar, or simply scroll down the list to find the 
 
 ---
 
-###  Step 1: Navigate to "New Connection"
+### How the Connection Works
 
-1. Go to the **Connection** section on the left sidebar.
-2. Click on **"New Source"**.
-
-###  Step 2: Choose Any Connector
-
-1. Search for any connector on the grid.
-2. Click on the **MSSQL** icon to begin configuration.
-
-###  Step 3: Fill Connection Details
-
-You will see a form titled **"Connect a Source"** with the following fields:
-
-- **Name**: Uniqe name for your connection.
-- **Description**: Optional description for reference.
-- **Host**: IP address or hostname of your MSSQL server.
-- **Port**: Port number (usually `1433`).
-- **Database**: Name of the database you want to connect to.
-- **Username**: Your MSSQL login username.
-- **Password**: Corresponding password.
+#### 1. **Create a New Connection**
+- Navigate to the **Connection** module from the sidebar.
+- Click on the **“+ New Source”** button.
+- Select the **source type** (e.g., PostgreSQL, S3, Snowflake, REST API, etc.).
+- Fill in the required configuration details:
+  - **Connection Name**
+  - **Host**
+  - **Port Number**
+  - **Username / Password**
+  - **Database Name / Bucket Name (if applicable)**
+- Click **Save** to store the connection.
 
 ![Connections UI](/images/connect-source.png)
 
-###  Step 4: Save and Test Connection
+---
+### Test & Verify Connection (Online/Offline)
+- Each connection can be tested after creation or during edit using **“Test”** button.
+   - If the connection is successful, status shows **Online**.
+   - If failed, status shows **Offline** with error message.
+   - This helps validate:
+     - Correct credentials
+     - Network accessibility
+     - Source availability
 
-- After filling out all required fields, click **"Test Connection"** (if available).
-- If the test is successful, click **"Save"**.
+### Manage Connections
+
+#### Edit a Connection
+- Click the **Edit (✏️)** icon on the connection.
+- Update credentials or other parameters.
+- Click **Update** to verify.
+- Click **Save** to update the connection.
+
+![Connections UI](/images/connect-source.png)
+
+#### Delete a Connection
+- Click on the **Delete (🗑️)** icon.
+- A confirmation popup appears.
+- Confirm deletion to remove the connection permanently.
+- *Deleting a connection also affects all dependent pipelines or ingestions.*
+
+
+#### View Logs
+1. Go to **Monitor > Logs** section.
+2. Filter logs by **Connection Type** or name.
+3. View:
+   -  **Success logs** – when a connection is created/tested successfully.
+   -  **Failure logs** – if connection test fails or times out.
+4. Click the log entry to view **error messages success/failed**, such as:
+   - Connection failed.
+   - Connection success.
+
+
+###  **Use in Ingestion or Pipeline**
+- Once verified, the connection becomes selectable in:
+  - **Ingestion module** – to ingest datasets
+  - **Pipeline module** – for transformation and flow configuration
+  - **SageMind / Playground** – for data queries and visualizations
 
 You are now ready to ingest and query data from your MSSQL source in DataSage.Ai!
 
@@ -62,9 +95,6 @@ In the future, the platform will support **dynamic connection to multiple destin
 
 ---
 
-> This setup ensures scalable, pluggable, and reliable destination management, aligned with the way data sources are handled today.
-
----
 
 ## What DataSage Do?
 
